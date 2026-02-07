@@ -1,0 +1,318 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Toronto Stock Exchange (TSX) - Trading Hours & Market Info</title>
+  <meta name="description"
+    content="Track Toronto Stock Exchange (TSX) trading hours, holidays, and market status. Convert Toronto Stock Exchange opening times to your local timezone.">
+  <meta name="keywords"
+    content="Toronto Stock Exchange trading hours, TSX market holidays, Toronto Stock Exchange opening time, convert America/Toronto to local time, Canada stock market, S&P/TSX Composite index, is Toronto Stock Exchange open, Toronto Stock Exchange timezone, North America stock exchanges">
+  <link rel="canonical" href="https://www.easystockmarkets.com/markets/toronto_stock_exchange.html">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.easystockmarkets.com/exchanges.html">
+  <meta property="og:title" content="Stock Exchange Details Search">
+  <meta property="og:description" content="Find detailed trading hours, timezones, and info for any stock exchange.">
+
+  <!-- JSON-LD placeholder (Populated by JS for specific exchanges) -->
+  <script type="application/ld+json" id="json-ld-target">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Stock Exchange Search",
+    "description": "Search engine for stock exchange details."
+  }
+  </script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="../assets/css/style.css">
+
+  <style>
+    /* Page Specific Styles */
+    .search-hero {
+      background-color: var(--secondary);
+      color: white;
+      padding: 3rem 0;
+      text-align: center;
+    }
+
+    .search-box {
+      position: relative;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .search-box input {
+      width: 100%;
+      padding: 1rem 1.5rem;
+      border-radius: 50px;
+      border: none;
+      font-size: 1rem;
+      box-shadow: var(--shadow-lg);
+    }
+
+    .search-box button {
+      position: absolute;
+      right: 5px;
+      top: 5px;
+      height: calc(100% - 10px);
+      border-radius: 40px;
+      padding: 0 1.5rem;
+      background: var(--primary);
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    .suggestions {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      background: white;
+      color: var(--text-main);
+      border-radius: var(--radius-md);
+      margin-top: 0.5rem;
+      box-shadow: var(--shadow-xl);
+      z-index: 10;
+      overflow: hidden;
+      text-align: left;
+    }
+
+    .suggestion-item {
+      padding: 0.75rem 1.5rem;
+      cursor: pointer;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .suggestion-item:hover {
+      background-color: var(--bg-body);
+    }
+
+    /* Details Table Override */
+    .details-table td {
+      padding: 0.75rem;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .details-table td:first-child {
+      font-weight: 600;
+      color: var(--secondary);
+      width: 30%;
+    }
+  </style>
+<script>window.PRELOADED_EXCHANGE = {"name":"Toronto Stock Exchange","code":"TSX","country":"Canada","region":"North America","owned_by":"TMX Group","index":"S\u0026P/TSX Composite","established":"1861","timezone":"America/Toronto","pre":"07:00","open":"09:30","close":"16:00","post":"16:15","website":"https://www.tsx.com","description":"Toronto Stock Exchange is Canada’s primary stock exchange and one of the largest in the world. It is a global leader in mining, energy, and financial services listings and plays a key role in North American capital markets."};</script>
+</head>
+
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="container nav-container">
+      <div class="logo">
+        <a href="../index.html">
+          <img src="../assets/images/logo.png" alt="EasyStockMarkets" class="logo-img">
+          <span>Easy</span>stockmarkets
+        </a>
+      </div>
+
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle Menu">☰</button>
+
+      <nav class="navigation" id="mainNav">
+        <a href="../index.html">Home</a>
+        <a href="../all-exchanges.html">Exchanges</a>
+        <a href="../exchanges.html" class="active">Search</a>
+        <a href="../time-conversion.html">Time Converter</a>
+        <a href="../about.html">About Us</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Search Section -->
+  <section class="search-hero">
+    <div class="container">
+      <h1 style="color: white; margin-bottom: 1.5rem;">Find Exchange Details</h1>
+      <div class="search-box">
+        <input type="text" id="searchInput" placeholder="Search by name (e.g., NYSE, NASDAQ)...">
+        <button id="searchBtn">Search</button>
+        <div id="suggestions" class="suggestions"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Content Section -->
+  <section class="container" style="padding: 3rem 20px;">
+
+    <div id="exchangeResult" style="display: none;">
+      <!-- Header Info -->
+      <div class="card" style="margin-bottom: 2rem;">
+        <div class="flex justify-between items-center" style="margin-bottom: 1rem; flex-wrap: wrap; gap: 1rem;">
+          <div>
+            <h2 id="ex-name" style="font-size: 1.75rem; color: var(--secondary);">Exchange Name</h2>
+            <div class="text-muted"><span id="ex-code">CODE</span> • <span id="ex-country">Country</span></div>
+          </div>
+          <a href="" id="ex-website" target="_blank" class="btn btn-secondary">Visit Website ↗</a>
+        </div>
+
+        <p id="ex-description" style="color: var(--text-muted); margin-bottom: 1rem;"></p>
+        <button id="readMoreBtn" class="link-arrow"
+          style="background: none; border: none; font-size: 0.9rem; padding: 0;">Read more</button>
+      </div>
+
+      <div class="flex flex-col gap-4">
+        <!-- Main Details -->
+        <div class="card">
+          <h3>Market Details</h3>
+          <div class="table-responsive">
+            <table class="details-table">
+              <tr>
+                <td>Region</td>
+                <td id="ex-region"></td>
+              </tr>
+              <tr>
+                <td>Owner</td>
+                <td id="ex-owned"></td>
+              </tr>
+              <tr>
+                <td>Key Index</td>
+                <td id="ex-index"></td>
+              </tr>
+              <tr>
+                <td>Established</td>
+                <td id="ex-established"></td>
+              </tr>
+              <tr>
+                <td>Timezone</td>
+                <td id="ex-timezone"></td>
+              </tr>
+            </table>
+          </div>
+        </div>
+
+        <!-- Timings -->
+        <div class="card">
+          <h3>Trading Session (Local Time)</h3>
+          <div class="table-responsive">
+            <table class="details-table">
+              <tr>
+                <td>Pre-Market</td>
+                <td id="ex-pre"></td>
+              </tr>
+              <tr>
+                <td>Market Open</td>
+                <td id="ex-open"></td>
+              </tr>
+              <tr>
+                <td>Market Close</td>
+                <td id="ex-close"></td>
+              </tr>
+              <tr>
+                <td>Post-Market</td>
+                <td id="ex-post"></td>
+              </tr>
+            </table>
+          </div>
+
+          <div style="margin-top: 1.5rem; text-align: center;">
+            <button id="toggleConvert" class="btn btn-primary">Convert Timezone</button>
+          </div>
+
+          <!-- Instant Converter -->
+          <div id="convertBox"
+            style="display: none; margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border-color);">
+            <h4 style="margin-bottom: 1rem;">Check Timings in Another Timezone</h4>
+            <div class="search-box" style="margin: 0; max-width: 100%;">
+              <input id="tzInput" placeholder="Enter timezone (e.g., Asia/Kolkata)..."
+                style="border: 1px solid var(--border-color); box-shadow: none;">
+              <div id="tzSuggestions" class="suggestions"></div>
+            </div>
+            <button id="convertBtn" class="btn btn-secondary" style="margin-top: 1rem; width: 100%;">Convert</button>
+
+            <div id="convertedResult"
+              style="display: none; margin-top: 1.5rem; background: var(--bg-body); padding: 1rem; border-radius: var(--radius-md);">
+              <table class="details-table">
+                <tr>
+                  <td>Your Timezone</td>
+                  <td id="cv-timezone"></td>
+                </tr>
+                <tr>
+                  <td>Pre-Market</td>
+                  <td id="cv-pre"></td>
+                </tr>
+                <tr>
+                  <td>Open</td>
+                  <td id="cv-open"></td>
+                </tr>
+                <tr>
+                  <td>Close</td>
+                  <td id="cv-close"></td>
+                </tr>
+                <tr>
+                  <td>Post-Market</td>
+                  <td id="cv-post"></td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <p class="text-center text-muted" style="margin-top: 2rem; font-size: 0.85rem;">
+        ⚠ Note: Timings may vary due to holidays or special trading sessions. Information is for educational purposes.
+      </p>
+    </div>
+
+    <div id="initialState" class="text-center text-muted" style="padding: 4rem 0;">
+      <p>Use the search bar above to find a stock exchange.</p>
+    </div>
+
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div>
+        <h4>Easystockmarkets</h4>
+        <p style="color: #94a3b8; line-height: 1.6;">
+          The most accurate and user-friendly directory for global stock exchange timings and conversions.
+        </p>
+      </div>
+
+      <div>
+        <h4>Quick Links</h4>
+        <a href="../index.html">Home</a>
+        <a href="../all-exchanges.html">Exchanges</a>
+        <a href="../time-conversion.html">Time Zone Converter</a>
+        <a href="../about.html">About Us</a>
+      </div>
+
+      <div>
+        <h4>Legal & Support</h4>
+        <a href="../privacy-policy.html">Privacy Policy</a>
+        <a href="../terms-disclaimer.html">Terms of Service</a>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container">
+        &copy; 2026 Easystockmarkets. All Rights Reserved.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="../assets/js/main.js" defer></script>
+  <script src="../data/timezones.js" defer></script>
+  <script src="../exchanges.js" defer></script>
+</body>
+
+</html>

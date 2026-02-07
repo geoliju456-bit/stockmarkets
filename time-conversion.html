@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Global Market Time Converter - Easystockmarkets</title>
+  <meta name="description"
+    content="Convert stock market trading hours to your local timezone. Plan your global investments efficiently.">
+  <link rel="canonical" href="https://www.easystockmarkets.com/time-conversion.html">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.easystockmarkets.com/time-conversion.html">
+  <meta property="og:title" content="Stock Market Time Zone Converter">
+  <meta property="og:description" content="Instantly convert trading hours from any stock exchange to your local time.">
+
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Market Time Converter",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "All",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="assets/css/style.css">
+
+  <style>
+    .converter-section {
+      padding: 4rem 20px;
+    }
+
+    .converter-card {
+      background: white;
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-xl);
+      max-width: 800px;
+      margin: 0 auto;
+      border: 1px solid var(--border-color);
+      overflow: hidden;
+    }
+
+    .converter-header-bg {
+      background: var(--secondary);
+      padding: 2rem;
+      color: white;
+      text-align: center;
+    }
+
+    .converter-body {
+      padding: 2rem;
+    }
+
+    .input-group {
+      margin-bottom: 2rem;
+      position: relative;
+    }
+
+    .input-group label {
+      display: block;
+      margin-bottom: 0.75rem;
+      font-weight: 600;
+      color: var(--secondary);
+    }
+
+    .input-control {
+      width: 100%;
+      padding: 1rem;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-color);
+      font-size: 1rem;
+    }
+
+    .result-table {
+      width: 100%;
+      margin-top: 1.5rem;
+      border-collapse: collapse;
+    }
+
+    .result-table th,
+    .result-table td {
+      padding: 1rem;
+      text-align: left;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .result-table th {
+      background: var(--bg-body);
+      color: var(--secondary);
+    }
+
+    .suggestions {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      background: white;
+      border: 1px solid var(--border-color);
+      z-index: 10;
+      max-height: 200px;
+      overflow-y: auto;
+      border-radius: 0 0 var(--radius-md) var(--radius-md);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .suggestion-item {
+      padding: 0.75rem 1rem;
+      cursor: pointer;
+    }
+
+    .suggestion-item:hover {
+      background-color: var(--bg-body);
+    }
+
+    .exchange-link {
+      text-align: center;
+      margin-top: 2rem;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="container nav-container">
+      <div class="logo">
+        <a href="index.html">
+          <img src="assets/images/logo.png" alt="EasyStockMarkets" class="logo-img">
+          <span>Easy</span>stockmarkets
+        </a>
+      </div>
+
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle Menu">☰</button>
+
+      <nav class="navigation" id="mainNav">
+        <a href="index.html">Home</a>
+        <a href="all-exchanges.html">Exchanges</a>
+        <a href="exchanges.html">Search</a>
+        <a href="time-conversion.html" class="active">Time Converter</a>
+        <a href="about.html">About Us</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="converter-section">
+    <div class="container">
+      <div class="text-center" style="margin-bottom: 3rem;">
+        <h1 style="margin-bottom: 1rem; color: var(--secondary);">Market Time Converter</h1>
+        <p class="text-muted">Compare trading hours between any stock exchange and any timezone.</p>
+      </div>
+
+      <div class="converter-card">
+        <div class="converter-header-bg">
+          <h2>Stock Exchange ⇄ Your Time</h2>
+        </div>
+
+        <div class="converter-body">
+          <div class="flex flex-col gap-4">
+            <!-- Exchange Selection -->
+            <div class="input-group">
+              <label>1. Select Stock Exchange</label>
+              <input id="exchangeInput" class="input-control" placeholder="Type exchange name (e.g. NYSE)...">
+              <div id="exchangeSug" class="suggestions" style="display:none;"></div>
+            </div>
+
+            <!-- Timezone Selection -->
+            <div class="input-group">
+              <label>2. Select Target Timezone</label>
+              <input id="timezoneInput" class="input-control" placeholder="Type timezone (e.g. Asia/Tokyo)...">
+              <div id="timezoneSug" class="suggestions" style="display:none;"></div>
+            </div>
+
+            <button id="convertBtn" class="btn btn-primary" style="width: 100%;">Convert Market Hours</button>
+          </div>
+
+          <!-- Results Area -->
+          <div id="result" style="display:none; margin-top: 2rem; animation: fadeIn 0.3s ease;">
+            <!-- Injected by JS -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div>
+        <h4>Easystockmarkets</h4>
+        <p style="color: #94a3b8; line-height: 1.6;">
+          The most accurate and user-friendly directory for global stock exchange timings and conversions.
+        </p>
+      </div>
+
+      <div>
+        <h4>Quick Links</h4>
+        <a href="index.html">Home</a>
+        <a href="all-exchanges.html">Exchanges</a>
+        <a href="time-conversion.html">Time Zone Converter</a>
+        <a href="about.html">About Us</a>
+      </div>
+
+      <div>
+        <h4>Legal & Support</h4>
+        <a href="privacy-policy.html">Privacy Policy</a>
+        <a href="terms-disclaimer.html">Terms of Service</a>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container">
+        &copy; 2026 Easystockmarkets. All Rights Reserved.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="assets/js/main.js" defer></script>
+  <script src="data/timezones.js" defer></script>
+  <script src="time-conversion.js" defer></script>
+</body>
+
+</html>

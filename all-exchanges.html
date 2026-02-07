@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Global Stock Exchanges - Easystockmarkets</title>
+    <meta name="description"
+        content="Browse our complete directory of global stock exchanges. Find trading hours, timezones, and official websites for markets worldwide.">
+    <meta name="keywords"
+        content="list of stock exchanges, global market directory, stock market index list, world stock exchange codes, international stock markets, stock exchange holidays, trading hours directory">
+    <link rel="canonical" href="https://www.easystockmarkets.com/all-exchanges.html">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.easystockmarkets.com/all-exchanges.html">
+    <meta property="og:title" content="All Global Stock Exchanges Directory">
+    <meta property="og:description"
+        content="Complete list of stock exchanges worldwide. Check status, trading hours, and timezones.">
+
+    <!-- JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      "name": "Global Stock Exchanges Directory",
+      "description": "A comprehensive list of stock exchanges from around the world.",
+      "url": "https://www.easystockmarkets.com/all-exchanges.html"
+    }
+    </script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container nav-container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="assets/images/logo.png" alt="EasyStockMarkets" class="logo-img">
+                    <span>Easy</span>stockmarkets
+                </a>
+            </div>
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle Menu">☰</button>
+
+            <nav class="navigation" id="mainNav">
+                <a href="index.html">Home</a>
+                <a href="all-exchanges.html" class="active">Exchanges</a>
+                <a href="exchanges.html">Search</a>
+                <a href="time-conversion.html">Time Converter</a>
+                <a href="about.html">About Us</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="hero" style="padding: 3rem 0;">
+        <div class="container">
+            <h1>Global Exchange Directory</h1>
+            <p>list of 170+ stock exchanges in the world.</p>
+
+            <div style="max-width: 500px; margin: 2rem auto 0;">
+                <input type="text" id="filterInput" placeholder="Filter by name, country, or code..."
+                    style="width: 100%; padding: 1rem; border-radius: var(--radius-md); border: 1px solid var(--border-color); font-size: 1rem; box-shadow: var(--shadow-sm);">
+            </div>
+        </div>
+    </section>
+
+    <!-- Content -->
+    <section class="container" style="padding: 3rem 20px;">
+        <div id="loading" class="text-center">Loading exchanges...</div>
+        <div id="exchangesGrid" class="grid-cols-3">
+            <!-- Populated by JS -->
+        </div>
+        <div id="noResults" class="text-center hidden" style="margin-top: 2rem;">
+            <p>No exchanges found matching your search.</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div>
+                <h4>Easystockmarkets</h4>
+                <p style="color: #94a3b8; line-height: 1.6;">
+                    The most accurate and user-friendly directory for global stock exchange timings and conversions.
+                </p>
+            </div>
+
+            <div>
+                <h4>Quick Links</h4>
+                <a href="index.html">Home</a>
+                <a href="all-exchanges.html">Exchanges</a>
+                <a href="time-conversion.html">Time Zone Converter</a>
+                <a href="about.html">About Us</a>
+            </div>
+
+            <div>
+                <h4>Legal & Support</h4>
+                <a href="privacy-policy.html">Privacy Policy</a>
+                <a href="terms-disclaimer.html">Terms of Service</a>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="container">
+                &copy; 2026 Easystockmarkets. All Rights Reserved.Disclaimer: Data is for informational purposes only.
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="assets/js/main.js" defer></script>
+    <script src="assets/js/all-exchanges.js" defer></script>
+</body>
+
+</html>
