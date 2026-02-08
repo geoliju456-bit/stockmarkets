@@ -30,10 +30,11 @@ function escapeHtml(text) {
 let generatedCount = 0;
 
 exchanges.forEach(ex => {
-    if (!ex.code) return;
+    if (!ex.name) return;
 
-    // Create filename: markets/HKEX.html
-    const filename = `${ex.code.trim().toUpperCase()}.html`;
+    // Create filename: markets/new_york_stock_exchange.html
+    // Use snake_case for permalinks based on exchange name
+    const filename = `${ex.name.toLowerCase().trim().replace(/[^a-z0-9]+/g, '_').replace(/^_+|_+$/g, '')}.html`;
     const filePath = path.join(outputDir, filename);
 
     // 1. Prepare SEO & Content
@@ -53,6 +54,9 @@ exchanges.forEach(ex => {
 
     // Replace Canonical
     html = html.replace(/href="https:\/\/www.easystockmarkets.com\/exchanges.html"/, `href="${canonical}"`);
+
+    // Inject Favicon
+    html = html.replace('</head>', '<link rel="icon" href="../assets/favicon.png" type="image/png">\n</head>');
 
     // -- Pre-fill Data (Server Side Rendering Simulation) --
     // We need to inject the data so it displays without JS, 
@@ -117,9 +121,10 @@ staticUrls.forEach(url => {
 
 // Dynamic (now Static) Exchange URLs
 exchanges.forEach(ex => {
-    if (!ex.code) return;
+    if (!ex.name) return;
+    const filename = `${ex.name.toLowerCase().trim().replace(/[^a-z0-9]+/g, '_').replace(/^_+|_+$/g, '')}.html`;
     xml += '  <url>\n';
-    xml += `    <loc>https://www.easystockmarkets.com/markets/${ex.code.trim().toUpperCase()}.html</loc>\n`;
+    xml += `    <loc>https://www.easystockmarkets.com/markets/${filename}</loc>\n`;
     xml += `    <lastmod>${today}</lastmod>\n`;
     xml += `    <changefreq>weekly</changefreq>\n`;
     xml += `    <priority>0.7</priority>\n`;

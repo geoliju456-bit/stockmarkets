@@ -1,16 +1,17 @@
-$json = Get-Content "data/exchanges.json" -Raw | ConvertFrom-Json
-$codes = @{}
+$json = Get-Content "data/exchanges.json" -Raw -Encoding UTF8 | ConvertFrom-Json
+$slugs = @{}
 
 for ($i = 0; $i -lt $json.Count; $i++) {
     $item = $json[$i]
-    if ($null -ne $item.code) {
-        $key = $item.code.Trim()
-        if ($codes.ContainsKey($key)) {
-            Write-Host "Duplicate Code Found: $key"
-            Write-Host "  Index 1: $($codes[$key].Index) - $($codes[$key].Name)"
+    if ($null -ne $item.name) {
+        $slug = $item.name.ToLower().Trim() -replace '[^a-z0-9]+', '_' -replace '^_+|_+$', ''
+        
+        if ($slugs.ContainsKey($slug)) {
+            Write-Host "Duplicate Slug Found: $slug"
+            Write-Host "  Index 1: $($slugs[$slug].Index) - $($slugs[$slug].Name)"
             Write-Host "  Index 2: $i - $($item.name)"
         } else {
-            $codes[$key] = @{ Index = $i; Name = $item.name }
+            $slugs[$slug] = @{ Index = $i; Name = $item.name }
         }
     }
 }

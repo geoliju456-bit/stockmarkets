@@ -60,7 +60,8 @@ foreach ($ex in $exchanges) {
     # Escape for embedding in HTML script
     # Powershell's ConvertTo-Json is usually safe for basic objects but let's be careful
     $preloader = "<script>window.PRELOADED_EXCHANGE = $jsonEx;</script>"
-    $html = $html.Replace('</head>', "$preloader`n</head>")
+    $favicon = '<link rel="icon" href="../assets/favicon.png" type="image/png">'
+    $html = $html.Replace('</head>', "$favicon`n$preloader`n</head>")
 
     # Fix Relative Paths (simple string replace)
     $html = $html.Replace('href="assets/', 'href="../assets/')
