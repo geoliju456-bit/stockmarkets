@@ -35,7 +35,7 @@ foreach ($ex in $exchanges) {
 
     # 1. SEO Data
     $title = "$($ex.name) ($($ex.code)) - Trading Hours & Market Info"
-    $description = "Track $($ex.name) ($($ex.code)) trading hours, holidays, and market status. Convert $($ex.name) opening times to your local timezone."
+    $description = "Check real-time $($ex.name) ($($ex.code)) trading hours, market status & holidays. Convert $($ex.name) opening/closing times to your local timezone instantly."
     $canonical = "https://www.easystockmarkets.com/markets/$filename"
 
     # 2. Modify Template
