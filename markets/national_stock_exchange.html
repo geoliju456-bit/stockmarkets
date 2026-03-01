@@ -111,10 +111,16 @@
     }
   </style>
 <link rel="icon" href="../assets/favicon.png" type="image/png">
-<script>window.PRELOADED_EXCHANGE = {"name":"National Stock Exchange","code":"NSE","country":"India","region":"Asia","owned_by":"Government of India","index":"NIFTY 50","established":"1992","timezone":"Asia/Kolkata","pre":"09:00","open":"09:15","close":"15:30","post":"16:00","website":"https://www.nseindia.com","description":"The National Stock Exchange of India (NSE) is the largest stock exchange in India and one of the most actively traded exchanges globally. Established to bring transparency and efficiency to Indian capital markets, NSE introduced fully electronic trading systems. It supports equity, derivatives, currency, and debt markets, serving millions of investors and institutions while playing a crucial role in India’s financial and economic growth."};</script>
+<script>window.PRELOADED_EXCHANGE = {"name":"National Stock Exchange","code":"NSE","country":"India","region":"Asia","owned_by":"Government of India","index":"NIFTY 50","established":"1992","timezone":"Asia/Kolkata","pre":"09:00","open":"09:15","close":"15:30","post":"16:00","website":"https://www.nseindia.com","description":"The National Stock Exchange of India (NSE) is the largest stock exchange in India and one of the most actively traded exchanges globally. Established to bring transparency and efficiency to Indian capital markets, NSE introduced fully electronic trading systems. It supports equity, derivatives, currency, and debt markets, serving millions of investors and institutions while playing a crucial role in India\u0027s financial and economic growth."};</script>
 </head>
 
 <body>
+
+  <!-- Global Loader Overlay -->
+  <div id="global-loader">
+    <div class="spinner"></div>
+    <div class="loader-text">Connecting to Market Data...</div>
+  </div>
 
   <!-- Header -->
   <header class="header">
@@ -232,7 +238,7 @@
             style="display: none; margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border-color);">
             <h4 style="margin-bottom: 1rem;">Check Timings in Another Timezone</h4>
             <div class="search-box" style="margin: 0; max-width: 100%;">
-              <input id="tzInput" placeholder="Enter timezone (e.g., Asia/Kolkata)..."
+              <input id="tzInput" placeholder="Enter timezone (e.g., tokyo/japan)..."
                 style="border: 1px solid var(--border-color); box-shadow: none;">
               <div id="tzSuggestions" class="suggestions"></div>
             </div>

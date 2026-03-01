@@ -83,16 +83,24 @@ document.addEventListener("DOMContentLoaded", () => {
     if (el) el.textContent = val || "—";
   }
 
-  function toAMPM(time) {
+  function toAMPM(time, tz) {
     if (!time) return "—";
     const [h, m] = time.split(":").map(Number);
     const d = new Date();
     d.setHours(h, m, 0);
-    return d.toLocaleTimeString("en-US", {
+    let str = d.toLocaleTimeString("en-US", {
       hour: "2-digit",
       minute: "2-digit",
       hour12: true
     });
+    if (tz) {
+      try {
+        const parts = new Intl.DateTimeFormat('en-US', { timeZone: tz, timeZoneName: 'short' }).formatToParts(new Date());
+        const tzPart = parts.find(p => p.type === 'timeZoneName');
+        if (tzPart) str += " " + tzPart.value;
+      } catch (e) { }
+    }
+    return str;
   }
 
   function convertTime(time, fromTZ, toTZ) {
@@ -210,11 +218,19 @@ document.addEventListener("DOMContentLoaded", () => {
       // The diff tells us how much ahead/behind Z2 is from Z1.
       const targetTime = new Date(sourceTime.getTime() + diff);
 
-      return targetTime.toLocaleTimeString("en-US", {
+      let str = targetTime.toLocaleTimeString("en-US", {
         hour: "2-digit",
         minute: "2-digit",
         hour12: true
       });
+
+      try {
+        const parts = new Intl.DateTimeFormat('en-US', { timeZone: toTZ, timeZoneName: 'short' }).formatToParts(now);
+        const namePart = parts.find(p => p.type === 'timeZoneName');
+        if (namePart) str += " " + namePart.value;
+      } catch (e) { }
+
+      return str;
 
     } catch (e) {
       console.error(e);
@@ -307,10 +323,10 @@ document.addEventListener("DOMContentLoaded", () => {
       window.Timezones ? Timezones.getTimezonePath(ex.timezone) : ex.timezone
     );
 
-    setText("ex-pre", toAMPM(ex.pre));
-    setText("ex-open", toAMPM(ex.open));
-    setText("ex-close", toAMPM(ex.close));
-    setText("ex-post", toAMPM(ex.post));
+    setText("ex-pre", toAMPM(ex.pre, ex.timezone));
+    setText("ex-open", toAMPM(ex.open, ex.timezone));
+    setText("ex-close", toAMPM(ex.close, ex.timezone));
+    setText("ex-post", toAMPM(ex.post, ex.timezone));
 
     const site = document.getElementById("ex-website");
     if (site) {

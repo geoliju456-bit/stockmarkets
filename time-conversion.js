@@ -141,58 +141,23 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!time) return "—";
     const [h, m] = time.split(":").map(Number);
 
-    // Calculate diff approach again for consistency with exchanges.js correction
-    const now = new Date();
-    const str1 = now.toLocaleString('en-US', { timeZone: tz });
-    // This logic is actually for displaying time IN tz.
-    // previous implementation used "timezone: tz" which is correct for "What time is it there?".
-    // But the input 'time' (h:m) is already in 'ex.timezone'.
-    // We want to convert 'time' FROM 'ex.timezone' TO 'tz'.
-
-    // Correct Logic:
-    // 1. We have 'time' in Exchange TZ.
-    // 2. We want to show it in Target TZ.
-
-    // This function effectively displays: "What time is [h,m] (interpreted as local date components) in [tz]?"
-    // That is NOT what we want.
-
-    // We want:
-    // Convert h:m (which is in ex.timezone) -> targetTZ.
-
-    // Reusing the diff logic:
-    // Note: 'time' variable here is just a string "HH:MM".
-
-    // To properly calculate, we need the source conversion. But this function `formatTime` 
-    // is only called later with result from `resultDiv.innerHTML` ?
-    // Wait, let's check call site.
-
-    // Call site:
-    // formatTime(ex.pre, ex.timezone)
-    // formatTime(ex.pre, tz)
-
-    // The intention of the second call is to show the time in the target timezone.
-    // BUT `formatTime` implementation:
-    // d.toLocaleTimeString(..., { timeZone: tz })
-    // This takes 'd' (local time set to h:m) and converts it to 'tz'.
-    // This is wrong unless source is local.
-
-    // Since I can't easily change the signature without breaking logic potentially, 
-    // I will implement the conversion inline in the handleConvert function 
-    // or make formatTime smarter.
-
-    // Actually, looking at `handleConvert` below:
-    // It calls: formatTime(ex.pre, ex.timezone) -> This is "Show 9:00 (Local) in ExchangeTZ". WRONG.
-    // It should just show ex.pre for the first column (maybe formatted).
-
-    // I will change handleConvert logic to be correct and formatTime to be a simple formatter.
-
     const d = new Date();
     d.setHours(h, m, 0);
-    return d.toLocaleTimeString("en-US", {
+    let str = d.toLocaleTimeString("en-US", {
       hour: "2-digit",
       minute: "2-digit",
       hour12: true
     });
+
+    if (tz) {
+      try {
+        const parts = new Intl.DateTimeFormat('en-US', { timeZone: tz, timeZoneName: 'short' }).formatToParts(new Date());
+        const tzPart = parts.find(p => p.type === 'timeZoneName');
+        if (tzPart) str += " " + tzPart.value;
+      } catch (e) { }
+    }
+
+    return str;
   }
 
   function timeInZone(timeStr, sourceTZ, targetTZ) {
@@ -214,11 +179,19 @@ document.addEventListener("DOMContentLoaded", () => {
       timeDate.setHours(h, m, 0);
 
       const resultDate = new Date(timeDate.getTime() + diff);
-      return resultDate.toLocaleTimeString("en-US", {
+      let str = resultDate.toLocaleTimeString("en-US", {
         hour: "2-digit",
         minute: "2-digit",
         hour12: true
       });
+
+      try {
+        const parts = new Intl.DateTimeFormat('en-US', { timeZone: targetTZ, timeZoneName: 'short' }).formatToParts(now);
+        const namePart = parts.find(p => p.type === 'timeZoneName');
+        if (namePart) str += " " + namePart.value;
+      } catch (e) { }
+
+      return str;
 
     } catch (e) {
       console.error(e);
@@ -297,10 +270,10 @@ document.addEventListener("DOMContentLoaded", () => {
             <th>${displayExTZ} (Market)</th>
             <th>${displayToTZ} (Varied)</th>
           </tr>
-          <tr><td>Pre</td><td>${formatTime(ex.pre)}</td><td>${timeInZone(ex.pre, ex.timezone, tz)}</td></tr>
-          <tr><td>Open</td><td>${formatTime(ex.open)}</td><td>${timeInZone(ex.open, ex.timezone, tz)}</td></tr>
-          <tr><td>Close</td><td>${formatTime(ex.close)}</td><td>${timeInZone(ex.close, ex.timezone, tz)}</td></tr>
-          <tr><td>Post</td><td>${formatTime(ex.post)}</td><td>${timeInZone(ex.post, ex.timezone, tz)}</td></tr>
+          <tr><td>Pre</td><td>${formatTime(ex.pre, ex.timezone)}</td><td>${timeInZone(ex.pre, ex.timezone, tz)}</td></tr>
+          <tr><td>Open</td><td>${formatTime(ex.open, ex.timezone)}</td><td>${timeInZone(ex.open, ex.timezone, tz)}</td></tr>
+          <tr><td>Close</td><td>${formatTime(ex.close, ex.timezone)}</td><td>${timeInZone(ex.close, ex.timezone, tz)}</td></tr>
+          <tr><td>Post</td><td>${formatTime(ex.post, ex.timezone)}</td><td>${timeInZone(ex.post, ex.timezone, tz)}</td></tr>
         </table>
 
         <div class="exchange-link">

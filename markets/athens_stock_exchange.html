@@ -111,10 +111,16 @@
     }
   </style>
 <link rel="icon" href="../assets/favicon.png" type="image/png">
-<script>window.PRELOADED_EXCHANGE = {"name":"Athens Stock Exchange","code":"ASE","country":"Greece","region":"Europe","owned_by":"Hellenic Exchanges","index":"ASE Composite","established":"1876","timezone":"Europe/Athens","pre":"08:30","open":"10:00","close":"17:20","post":"18:00","website":"https://www.athexgroup.gr","description":"The Athens Stock Exchange is Greece’s primary securities market, facilitating equity and bond trading. It supports Greek corporations and government financing while operating under European Union regulations. The exchange focuses on market transparency, investor protection, and modernization of financial infrastructure."};</script>
+<script>window.PRELOADED_EXCHANGE = {"name":"Athens Stock Exchange","code":"ASE","country":"Greece","region":"Europe","owned_by":"Hellenic Exchanges","index":"ASE Composite","established":"1876","timezone":"Europe/Athens","pre":"08:30","open":"10:00","close":"17:20","post":"18:00","website":"https://www.athexgroup.gr","description":"The Athens Stock Exchange is Greece\u0027s primary securities market, facilitating equity and bond trading. It supports Greek corporations and government financing while operating under European Union regulations. The exchange focuses on market transparency, investor protection, and modernization of financial infrastructure."};</script>
 </head>
 
 <body>
+
+  <!-- Global Loader Overlay -->
+  <div id="global-loader">
+    <div class="spinner"></div>
+    <div class="loader-text">Connecting to Market Data...</div>
+  </div>
 
   <!-- Header -->
   <header class="header">
@@ -232,7 +238,7 @@
             style="display: none; margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border-color);">
             <h4 style="margin-bottom: 1rem;">Check Timings in Another Timezone</h4>
             <div class="search-box" style="margin: 0; max-width: 100%;">
-              <input id="tzInput" placeholder="Enter timezone (e.g., Asia/Kolkata)..."
+              <input id="tzInput" placeholder="Enter timezone (e.g., tokyo/japan)..."
                 style="border: 1px solid var(--border-color); box-shadow: none;">
               <div id="tzSuggestions" class="suggestions"></div>
             </div>

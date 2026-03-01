@@ -111,10 +111,16 @@
     }
   </style>
 <link rel="icon" href="../assets/favicon.png" type="image/png">
-<script>window.PRELOADED_EXCHANGE = {"name":"Pakistan Stock Exchange","code":"PSX","country":"Pakistan","region":"Asia","owned_by":"Pakistan Stock Exchange Limited","index":"KSE-100","established":"1947","timezone":"Asia/Karachi","pre":"09:00","open":"09:30","close":"15:30","post":"15:45","website":"https://www.psx.com.pk","description":"Pakistan Stock Exchange is the primary stock exchange of Pakistan formed through the merger of Karachi, Lahore, and Islamabad stock exchanges. It provides a regulated platform for equity, bond, and derivatives trading. The exchange plays a crucial role in supporting Pakistan’s financial system and capital market development."};</script>
+<script>window.PRELOADED_EXCHANGE = {"name":"Pakistan Stock Exchange","code":"PSX","country":"Pakistan","region":"Asia","owned_by":"Pakistan Stock Exchange Limited","index":"KSE-100","established":"1947","timezone":"Asia/Karachi","pre":"09:00","open":"09:30","close":"15:30","post":"15:45","website":"https://www.psx.com.pk","description":"Pakistan Stock Exchange is the primary stock exchange of Pakistan formed through the merger of Karachi, Lahore, and Islamabad stock exchanges. It provides a regulated platform for equity, bond, and derivatives trading. The exchange plays a crucial role in supporting Pakistan\u0027s financial system and capital market development."};</script>
 </head>
 
 <body>
+
+  <!-- Global Loader Overlay -->
+  <div id="global-loader">
+    <div class="spinner"></div>
+    <div class="loader-text">Connecting to Market Data...</div>
+  </div>
 
   <!-- Header -->
   <header class="header">
@@ -232,7 +238,7 @@
             style="display: none; margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border-color);">
             <h4 style="margin-bottom: 1rem;">Check Timings in Another Timezone</h4>
             <div class="search-box" style="margin: 0; max-width: 100%;">
-              <input id="tzInput" placeholder="Enter timezone (e.g., Asia/Kolkata)..."
+              <input id="tzInput" placeholder="Enter timezone (e.g., tokyo/japan)..."
                 style="border: 1px solid var(--border-color); box-shadow: none;">
               <div id="tzSuggestions" class="suggestions"></div>
             </div>

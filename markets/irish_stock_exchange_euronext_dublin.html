@@ -111,10 +111,16 @@
     }
   </style>
 <link rel="icon" href="../assets/favicon.png" type="image/png">
-<script>window.PRELOADED_EXCHANGE = {"name":"Irish Stock Exchange (Euronext Dublin)","code":"ISE","country":"Ireland","region":"Europe","owned_by":"Euronext","index":"ISEQ","established":"1793","timezone":"Europe/Dublin","pre":"08:00","open":"08:00","close":"16:30","post":"17:00","website":"https://www.euronext.com","description":"The Irish Stock Exchange, now Euronext Dublin, is Ireland’s principal securities market. It is a global leader in international debt listings and provides trading in equities, bonds, and ETFs. The exchange supports multinational issuers and operates under strong European regulatory standards."};</script>
+<script>window.PRELOADED_EXCHANGE = {"name":"Irish Stock Exchange (Euronext Dublin)","code":"ISE","country":"Ireland","region":"Europe","owned_by":"Euronext","index":"ISEQ","established":"1793","timezone":"Europe/Dublin","pre":"08:00","open":"08:00","close":"16:30","post":"17:00","website":"https://www.euronext.com","description":"The Irish Stock Exchange, now Euronext Dublin, is Ireland\u0027s principal securities market. It is a global leader in international debt listings and provides trading in equities, bonds, and ETFs. The exchange supports multinational issuers and operates under strong European regulatory standards."};</script>
 </head>
 
 <body>
+
+  <!-- Global Loader Overlay -->
+  <div id="global-loader">
+    <div class="spinner"></div>
+    <div class="loader-text">Connecting to Market Data...</div>
+  </div>
 
   <!-- Header -->
   <header class="header">
@@ -232,7 +238,7 @@
             style="display: none; margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border-color);">
             <h4 style="margin-bottom: 1rem;">Check Timings in Another Timezone</h4>
             <div class="search-box" style="margin: 0; max-width: 100%;">
-              <input id="tzInput" placeholder="Enter timezone (e.g., Asia/Kolkata)..."
+              <input id="tzInput" placeholder="Enter timezone (e.g., tokyo/japan)..."
                 style="border: 1px solid var(--border-color); box-shadow: none;">
               <div id="tzSuggestions" class="suggestions"></div>
             </div>

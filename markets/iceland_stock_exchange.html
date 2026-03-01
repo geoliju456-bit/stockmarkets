@@ -111,10 +111,16 @@
     }
   </style>
 <link rel="icon" href="../assets/favicon.png" type="image/png">
-<script>window.PRELOADED_EXCHANGE = {"name":"Iceland Stock Exchange","code":"ICEX","country":"Iceland","region":"Europe","owned_by":"Nasdaq Nordic","index":"OMX Iceland 10","established":"1985","timezone":"Atlantic/Reykjavik","pre":"08:30","open":"09:30","close":"15:30","post":"16:00","website":"https://www.nasdaqomxnordic.com","description":"The Iceland Stock Exchange operates under Nasdaq Nordic and supports trading in equities and bonds. It plays an important role in Iceland’s financial system by providing transparent market access and reliable trading infrastructure."};</script>
+<script>window.PRELOADED_EXCHANGE = {"name":"Iceland Stock Exchange","code":"ICEX","country":"Iceland","region":"Europe","owned_by":"Nasdaq Nordic","index":"OMX Iceland 10","established":"1985","timezone":"Atlantic/Reykjavik","pre":"08:30","open":"09:30","close":"15:30","post":"16:00","website":"https://www.nasdaqomxnordic.com","description":"The Iceland Stock Exchange operates under Nasdaq Nordic and supports trading in equities and bonds. It plays an important role in Iceland\u0027s financial system by providing transparent market access and reliable trading infrastructure."};</script>
 </head>
 
 <body>
+
+  <!-- Global Loader Overlay -->
+  <div id="global-loader">
+    <div class="spinner"></div>
+    <div class="loader-text">Connecting to Market Data...</div>
+  </div>
 
   <!-- Header -->
   <header class="header">
@@ -232,7 +238,7 @@
             style="display: none; margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border-color);">
             <h4 style="margin-bottom: 1rem;">Check Timings in Another Timezone</h4>
             <div class="search-box" style="margin: 0; max-width: 100%;">
-              <input id="tzInput" placeholder="Enter timezone (e.g., Asia/Kolkata)..."
+              <input id="tzInput" placeholder="Enter timezone (e.g., tokyo/japan)..."
                 style="border: 1px solid var(--border-color); box-shadow: none;">
               <div id="tzSuggestions" class="suggestions"></div>
             </div>

@@ -111,10 +111,16 @@
     }
   </style>
 <link rel="icon" href="../assets/favicon.png" type="image/png">
-<script>window.PRELOADED_EXCHANGE = {"name":"Uzbekistan Stock Exchange","code":"UZSE","country":"Uzbekistan","region":"Asia","owned_by":"Government of Uzbekistan","index":"UZSE Index","established":"1994","timezone":"Asia/Tashkent","pre":"09:00","open":"10:00","close":"16:00","post":"16:15","website":"https://www.uzse.uz","description":"Uzbekistan Stock Exchange is the primary securities market of Uzbekistan. It supports equity and bond trading and plays a growing role in the country’s financial liberalization. The exchange helps attract domestic and foreign investment into key economic sectors."};</script>
+<script>window.PRELOADED_EXCHANGE = {"name":"Uzbekistan Stock Exchange","code":"UZSE","country":"Uzbekistan","region":"Asia","owned_by":"Government of Uzbekistan","index":"UZSE Index","established":"1994","timezone":"Asia/Tashkent","pre":"09:00","open":"10:00","close":"16:00","post":"16:15","website":"https://www.uzse.uz","description":"Uzbekistan Stock Exchange is the primary securities market of Uzbekistan. It supports equity and bond trading and plays a growing role in the country\u0027s financial liberalization. The exchange helps attract domestic and foreign investment into key economic sectors."};</script>
 </head>
 
 <body>
+
+  <!-- Global Loader Overlay -->
+  <div id="global-loader">
+    <div class="spinner"></div>
+    <div class="loader-text">Connecting to Market Data...</div>
+  </div>
 
   <!-- Header -->
   <header class="header">
@@ -232,7 +238,7 @@
             style="display: none; margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border-color);">
             <h4 style="margin-bottom: 1rem;">Check Timings in Another Timezone</h4>
             <div class="search-box" style="margin: 0; max-width: 100%;">
-              <input id="tzInput" placeholder="Enter timezone (e.g., Asia/Kolkata)..."
+              <input id="tzInput" placeholder="Enter timezone (e.g., tokyo/japan)..."
                 style="border: 1px solid var(--border-color); box-shadow: none;">
               <div id="tzSuggestions" class="suggestions"></div>
             </div>

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>All Global Stock Exchanges - Easystockmarkets</title>
+    <title>All WorldStock Exchanges - Easystockmarkets</title>
     <meta name="description"
         content="Access the complete directory of 170+ global stock exchanges. View official trading hours, market holidays, timezones & website links. Find your market now.">
     <meta name="keywords"
@@ -14,13 +14,13 @@
     <!-- Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.easystockmarkets.com/all-exchanges.html">
-    <meta property="og:title" content="All Global Stock Exchanges Directory">
+    <meta property="og:title" content="All World Stock Exchanges Directory">
     <meta property="og:description"
         content="Complete list of stock exchanges worldwide. Check status, trading hours, and timezones.">
 
     <!-- JSON-LD -->
     <script type="application/ld+json">
-    {
+    { 
       "@context": "https://schema.org",
       "@type": "CollectionPage",
       "name": "Global Stock Exchanges Directory",
@@ -40,6 +40,12 @@
 </head>
 
 <body>
+
+    <!-- Global Loader Overlay -->
+    <div id="global-loader">
+        <div class="spinner"></div>
+        <div class="loader-text">Loading Directory...</div>
+    </div>
 
     <!-- Header -->
     <header class="header">
@@ -65,7 +71,7 @@
     <!-- Page Header -->
     <section class="hero" style="padding: 3rem 0;">
         <div class="container">
-            <h1>Global Exchange Directory</h1>
+            <h1>World Stock Exchanges Directory</h1>
             <p>list of 170+ stock exchanges in the world.</p>
 
             <div style="max-width: 500px; margin: 2rem auto 0;">
@@ -80,6 +86,9 @@
         <div id="loading" class="text-center">Loading exchanges...</div>
         <div id="exchangesGrid" class="grid-cols-3">
             <!-- Populated by JS -->
+        </div>
+        <div id="loadMoreContainer" class="text-center hidden" style="margin-top: 2rem;">
+            <button id="loadMoreBtn" class="btn btn-secondary">View More</button>
         </div>
         <div id="noResults" class="text-center hidden" style="margin-top: 2rem;">
             <p>No exchanges found matching your search.</p>

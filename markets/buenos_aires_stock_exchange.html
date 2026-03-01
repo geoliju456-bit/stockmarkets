@@ -111,10 +111,16 @@
     }
   </style>
 <link rel="icon" href="../assets/favicon.png" type="image/png">
-<script>window.PRELOADED_EXCHANGE = {"name":"Buenos Aires Stock Exchange","code":"BYMA","country":"Argentina","region":"South America","owned_by":"Bolsas y Mercados Argentinos","index":"MERVAL","established":"1854","timezone":"America/Argentina/Buenos_Aires","pre":"10:30","open":"11:00","close":"17:00","post":"17:30","website":"https://www.byma.com.ar","description":"The Buenos Aires Stock Exchange, operated by BYMA, is Argentina’s primary securities market. It facilitates trading in equities, bonds, and derivatives and supports capital formation for Argentine companies. The exchange is a key indicator of Argentina’s economic and financial conditions."};</script>
+<script>window.PRELOADED_EXCHANGE = {"name":"Buenos Aires Stock Exchange","code":"BYMA","country":"Argentina","region":"South America","owned_by":"Bolsas y Mercados Argentinos","index":"MERVAL","established":"1854","timezone":"America/Argentina/Buenos_Aires","pre":"10:30","open":"11:00","close":"17:00","post":"17:30","website":"https://www.byma.com.ar","description":"The Buenos Aires Stock Exchange, operated by BYMA, is Argentina\u0027s primary securities market. It facilitates trading in equities, bonds, and derivatives and supports capital formation for Argentine companies. The exchange is a key indicator of Argentina\u0027s economic and financial conditions."};</script>
 </head>
 
 <body>
+
+  <!-- Global Loader Overlay -->
+  <div id="global-loader">
+    <div class="spinner"></div>
+    <div class="loader-text">Connecting to Market Data...</div>
+  </div>
 
   <!-- Header -->
   <header class="header">
@@ -232,7 +238,7 @@
             style="display: none; margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border-color);">
             <h4 style="margin-bottom: 1rem;">Check Timings in Another Timezone</h4>
             <div class="search-box" style="margin: 0; max-width: 100%;">
-              <input id="tzInput" placeholder="Enter timezone (e.g., Asia/Kolkata)..."
+              <input id="tzInput" placeholder="Enter timezone (e.g., tokyo/japan)..."
                 style="border: 1px solid var(--border-color); box-shadow: none;">
               <div id="tzSuggestions" class="suggestions"></div>
             </div>

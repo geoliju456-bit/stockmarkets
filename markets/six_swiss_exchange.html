@@ -111,10 +111,16 @@
     }
   </style>
 <link rel="icon" href="../assets/favicon.png" type="image/png">
-<script>window.PRELOADED_EXCHANGE = {"name":"SIX Swiss Exchange","code":"SIX","country":"Switzerland","region":"Europe","owned_by":"SIX Group","index":"SMI","established":"1850","timezone":"Europe/Zurich","pre":"07:15","open":"09:00","close":"17:30","post":"18:00","website":"https://www.six-group.com","description":"SIX Swiss Exchange is Switzerland’s principal stock exchange and a major European financial marketplace. It provides trading in equities, bonds, ETFs, and structured products. Known for strong regulation, stability, and advanced trading technology, SIX supports both domestic and international companies while maintaining high standards of transparency and investor protection."};</script>
+<script>window.PRELOADED_EXCHANGE = {"name":"SIX Swiss Exchange","code":"SIX","country":"Switzerland","region":"Europe","owned_by":"SIX Group","index":"SMI","established":"1850","timezone":"Europe/Zurich","pre":"07:15","open":"09:00","close":"17:30","post":"18:00","website":"https://www.six-group.com","description":"SIX Swiss Exchange is Switzerland\u0027s principal stock exchange and a major European financial marketplace. It provides trading in equities, bonds, ETFs, and structured products. Known for strong regulation, stability, and advanced trading technology, SIX supports both domestic and international companies while maintaining high standards of transparency and investor protection."};</script>
 </head>
 
 <body>
+
+  <!-- Global Loader Overlay -->
+  <div id="global-loader">
+    <div class="spinner"></div>
+    <div class="loader-text">Connecting to Market Data...</div>
+  </div>
 
   <!-- Header -->
   <header class="header">
@@ -232,7 +238,7 @@
             style="display: none; margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border-color);">
             <h4 style="margin-bottom: 1rem;">Check Timings in Another Timezone</h4>
             <div class="search-box" style="margin: 0; max-width: 100%;">
-              <input id="tzInput" placeholder="Enter timezone (e.g., Asia/Kolkata)..."
+              <input id="tzInput" placeholder="Enter timezone (e.g., tokyo/japan)..."
                 style="border: 1px solid var(--border-color); box-shadow: none;">
               <div id="tzSuggestions" class="suggestions"></div>
             </div>

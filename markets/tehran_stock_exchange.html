@@ -111,10 +111,16 @@
     }
   </style>
 <link rel="icon" href="../assets/favicon.png" type="image/png">
-<script>window.PRELOADED_EXCHANGE = {"name":"Tehran Stock Exchange","code":"TSE","country":"Iran","region":"Asia","owned_by":"Government of Iran","index":"TEDPIX","established":"1967","timezone":"Asia/Tehran","pre":"08:30","open":"09:00","close":"12:30","post":"12:45","website":"https://www.tse.ir","description":"Tehran Stock Exchange is the largest stock exchange in Iran and one of the oldest in the Middle East. It provides a platform for equity and bond trading and supports domestic companies across energy, manufacturing, and financial sectors. The exchange plays a key role in Iran’s capital market infrastructure."};</script>
+<script>window.PRELOADED_EXCHANGE = {"name":"Tehran Stock Exchange","code":"TSE","country":"Iran","region":"Asia","owned_by":"Government of Iran","index":"TEDPIX","established":"1967","timezone":"Asia/Tehran","pre":"08:30","open":"09:00","close":"12:30","post":"12:45","website":"https://www.tse.ir","description":"Tehran Stock Exchange is the largest stock exchange in Iran and one of the oldest in the Middle East. It provides a platform for equity and bond trading and supports domestic companies across energy, manufacturing, and financial sectors. The exchange plays a key role in Iran\u0027s capital market infrastructure."};</script>
 </head>
 
 <body>
+
+  <!-- Global Loader Overlay -->
+  <div id="global-loader">
+    <div class="spinner"></div>
+    <div class="loader-text">Connecting to Market Data...</div>
+  </div>
 
   <!-- Header -->
   <header class="header">
@@ -232,7 +238,7 @@
             style="display: none; margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border-color);">
             <h4 style="margin-bottom: 1rem;">Check Timings in Another Timezone</h4>
             <div class="search-box" style="margin: 0; max-width: 100%;">
-              <input id="tzInput" placeholder="Enter timezone (e.g., Asia/Kolkata)..."
+              <input id="tzInput" placeholder="Enter timezone (e.g., tokyo/japan)..."
                 style="border: 1px solid var(--border-color); box-shadow: none;">
               <div id="tzSuggestions" class="suggestions"></div>
             </div>

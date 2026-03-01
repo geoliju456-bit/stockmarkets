@@ -111,10 +111,16 @@
     }
   </style>
 <link rel="icon" href="../assets/favicon.png" type="image/png">
-<script>window.PRELOADED_EXCHANGE = {"name":"Bahrain Bourse","code":"BHB","country":"Bahrain","region":"Asia","owned_by":"Government of Bahrain","index":"Bahrain All Share Index","established":"1987","timezone":"Asia/Bahrain","pre":"09:00","open":"10:00","close":"14:00","post":"14:15","website":"https://www.bahrainbourse.com","description":"Bahrain Bourse is the national stock exchange of Bahrain. It provides trading in equities, bonds, and Islamic finance instruments. The exchange supports Bahrain’s position as a regional financial services hub in the Gulf."};</script>
+<script>window.PRELOADED_EXCHANGE = {"name":"Bahrain Bourse","code":"BHB","country":"Bahrain","region":"Asia","owned_by":"Government of Bahrain","index":"Bahrain All Share Index","established":"1987","timezone":"Asia/Bahrain","pre":"09:00","open":"10:00","close":"14:00","post":"14:15","website":"https://www.bahrainbourse.com","description":"Bahrain Bourse is the national stock exchange of Bahrain. It provides trading in equities, bonds, and Islamic finance instruments. The exchange supports Bahrain\u0027s position as a regional financial services hub in the Gulf."};</script>
 </head>
 
 <body>
+
+  <!-- Global Loader Overlay -->
+  <div id="global-loader">
+    <div class="spinner"></div>
+    <div class="loader-text">Connecting to Market Data...</div>
+  </div>
 
   <!-- Header -->
   <header class="header">
@@ -232,7 +238,7 @@
             style="display: none; margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border-color);">
             <h4 style="margin-bottom: 1rem;">Check Timings in Another Timezone</h4>
             <div class="search-box" style="margin: 0; max-width: 100%;">
-              <input id="tzInput" placeholder="Enter timezone (e.g., Asia/Kolkata)..."
+              <input id="tzInput" placeholder="Enter timezone (e.g., tokyo/japan)..."
                 style="border: 1px solid var(--border-color); box-shadow: none;">
               <div id="tzSuggestions" class="suggestions"></div>
             </div>

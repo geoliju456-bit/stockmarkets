@@ -7,15 +7,20 @@ document.addEventListener("DOMContentLoaded", () => {
     const loading = document.getElementById("loading");
     const filterInput = document.getElementById("filterInput");
     const noResults = document.getElementById("noResults");
+    const loadMoreBtn = document.getElementById("loadMoreBtn");
+    const loadMoreContainer = document.getElementById("loadMoreContainer");
 
     let allExchanges = [];
+    let currentList = [];
+    let currentPage = 1;
+    const itemsPerPage = 30;
 
     // Fetch Data
     fetch("data/exchanges.json")
         .then(res => res.json())
         .then(data => {
             allExchanges = data;
-            renderExchanges(data);
+            updateDisplay(data);
             loading.style.display = "none";
         })
         .catch(err => {
@@ -23,12 +28,32 @@ document.addEventListener("DOMContentLoaded", () => {
             loading.textContent = "Failed to load data. Please try again later.";
         });
 
-    // Render Function
-    function renderExchanges(list) {
-        grid.innerHTML = "";
+    // Load Initial or Filtered Data with Pagination
+    function updateDisplay(list) {
+        currentList = list;
+        currentPage = 1;
+        const pageData = currentList.slice(0, itemsPerPage);
+        renderExchanges(pageData, false);
+    }
 
-        if (list.length === 0) {
+    // Handle View More
+    loadMoreBtn.addEventListener("click", () => {
+        currentPage++;
+        const startIndex = (currentPage - 1) * itemsPerPage;
+        const endIndex = startIndex + itemsPerPage;
+        const pageData = currentList.slice(startIndex, endIndex);
+        renderExchanges(pageData, true);
+    });
+
+    // Render Function
+    function renderExchanges(list, append = false) {
+        if (!append) {
+            grid.innerHTML = "";
+        }
+
+        if (list.length === 0 && !append) {
             noResults.classList.remove("hidden");
+            loadMoreContainer.classList.add("hidden");
             return;
         } else {
             noResults.classList.add("hidden");
@@ -55,6 +80,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
             grid.appendChild(card);
         });
+
+        // Show or hide Load More button
+        if (currentList.length > currentPage * itemsPerPage) {
+            loadMoreContainer.classList.remove("hidden");
+        } else {
+            loadMoreContainer.classList.add("hidden");
+        }
     }
 
     // Filter Logic
@@ -64,11 +96,11 @@ document.addEventListener("DOMContentLoaded", () => {
         const filtered = allExchanges.filter(ex => {
             return (
                 ex.name.toLowerCase().includes(query) ||
-                ex.code.toLowerCase().includes(query) ||
-                ex.country.toLowerCase().includes(query)
+                (ex.code && ex.code.toLowerCase().includes(query)) ||
+                (ex.country && ex.country.toLowerCase().includes(query))
             );
         });
 
-        renderExchanges(filtered);
+        updateDisplay(filtered);
     });
 });

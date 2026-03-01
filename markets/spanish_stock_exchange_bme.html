@@ -111,10 +111,16 @@
     }
   </style>
 <link rel="icon" href="../assets/favicon.png" type="image/png">
-<script>window.PRELOADED_EXCHANGE = {"name":"Spanish Stock Exchange (BME)","code":"BME","country":"Spain","region":"Europe","owned_by":"SIX Group","index":"IBEX 35","established":"1831","timezone":"Europe/Madrid","pre":"08:30","open":"09:00","close":"17:30","post":"18:00","website":"https://www.bolsasymercados.es","description":"BME operates Spain’s stock exchanges including Madrid, Barcelona, Bilbao, and Valencia. It provides trading in equities, derivatives, and fixed income. The exchange plays a vital role in Spain’s financial markets and supports both domestic and international investors."};</script>
+<script>window.PRELOADED_EXCHANGE = {"name":"Spanish Stock Exchange (BME)","code":"BME","country":"Spain","region":"Europe","owned_by":"SIX Group","index":"IBEX 35","established":"1831","timezone":"Europe/Madrid","pre":"08:30","open":"09:00","close":"17:30","post":"18:00","website":"https://www.bolsasymercados.es","description":"BME operates Spain\u0027s stock exchanges including Madrid, Barcelona, Bilbao, and Valencia. It provides trading in equities, derivatives, and fixed income. The exchange plays a vital role in Spain\u0027s financial markets and supports both domestic and international investors."};</script>
 </head>
 
 <body>
+
+  <!-- Global Loader Overlay -->
+  <div id="global-loader">
+    <div class="spinner"></div>
+    <div class="loader-text">Connecting to Market Data...</div>
+  </div>
 
   <!-- Header -->
   <header class="header">
@@ -232,7 +238,7 @@
             style="display: none; margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border-color);">
             <h4 style="margin-bottom: 1rem;">Check Timings in Another Timezone</h4>
             <div class="search-box" style="margin: 0; max-width: 100%;">
-              <input id="tzInput" placeholder="Enter timezone (e.g., Asia/Kolkata)..."
+              <input id="tzInput" placeholder="Enter timezone (e.g., tokyo/japan)..."
                 style="border: 1px solid var(--border-color); box-shadow: none;">
               <div id="tzSuggestions" class="suggestions"></div>
             </div>

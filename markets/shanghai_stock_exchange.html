@@ -111,10 +111,16 @@
     }
   </style>
 <link rel="icon" href="../assets/favicon.png" type="image/png">
-<script>window.PRELOADED_EXCHANGE = {"name":"Shanghai Stock Exchange","code":"SSE","country":"China","region":"Asia","owned_by":"China Securities Regulatory Commission","index":"SSE Composite","established":"1990","timezone":"Asia/Shanghai","pre":"09:15","open":"09:30","close":"15:00","post":"15:30","website":"https://www.sse.com.cn","description":"The Shanghai Stock Exchange (SSE) is one of China’s main stock exchanges and a key component of its financial system. It primarily lists large state-owned enterprises and major corporations. SSE supports capital formation in China while operating under strict regulatory oversight to ensure market stability and investor protection."};</script>
+<script>window.PRELOADED_EXCHANGE = {"name":"Shanghai Stock Exchange","code":"SSE","country":"China","region":"Asia","owned_by":"China Securities Regulatory Commission","index":"SSE Composite","established":"1990","timezone":"Asia/Shanghai","pre":"09:15","open":"09:30","close":"15:00","post":"15:30","website":"https://www.sse.com.cn","description":"The Shanghai Stock Exchange (SSE) is one of China\u0027s main stock exchanges and a key component of its financial system. It primarily lists large state-owned enterprises and major corporations. SSE supports capital formation in China while operating under strict regulatory oversight to ensure market stability and investor protection."};</script>
 </head>
 
 <body>
+
+  <!-- Global Loader Overlay -->
+  <div id="global-loader">
+    <div class="spinner"></div>
+    <div class="loader-text">Connecting to Market Data...</div>
+  </div>
 
   <!-- Header -->
   <header class="header">
@@ -232,7 +238,7 @@
             style="display: none; margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border-color);">
             <h4 style="margin-bottom: 1rem;">Check Timings in Another Timezone</h4>
             <div class="search-box" style="margin: 0; max-width: 100%;">
-              <input id="tzInput" placeholder="Enter timezone (e.g., Asia/Kolkata)..."
+              <input id="tzInput" placeholder="Enter timezone (e.g., tokyo/japan)..."
                 style="border: 1px solid var(--border-color); box-shadow: none;">
               <div id="tzSuggestions" class="suggestions"></div>
             </div>

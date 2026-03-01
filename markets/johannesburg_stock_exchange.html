@@ -111,10 +111,16 @@
     }
   </style>
 <link rel="icon" href="../assets/favicon.png" type="image/png">
-<script>window.PRELOADED_EXCHANGE = {"name":"Johannesburg Stock Exchange","code":"JSE","country":"South Africa","region":"Africa","owned_by":"Public Company","index":"FTSE/JSE Top 40","established":"1887","timezone":"Africa/Johannesburg","pre":"08:30","open":"09:00","close":"17:00","post":"17:15","website":"https://www.jse.co.za","description":"The Johannesburg Stock Exchange is Africa’s largest and most developed stock exchange by market capitalization. It provides a platform for trading equities, bonds, derivatives, and ETFs. The JSE plays a critical role in South Africa’s financial system and attracts significant domestic and international investment across multiple sectors."};</script>
+<script>window.PRELOADED_EXCHANGE = {"name":"Johannesburg Stock Exchange","code":"JSE","country":"South Africa","region":"Africa","owned_by":"Public Company","index":"FTSE/JSE Top 40","established":"1887","timezone":"Africa/Johannesburg","pre":"08:30","open":"09:00","close":"17:00","post":"17:15","website":"https://www.jse.co.za","description":"The Johannesburg Stock Exchange is Africa\u0027s largest and most developed stock exchange by market capitalization. It provides a platform for trading equities, bonds, derivatives, and ETFs. The JSE plays a critical role in South Africa\u0027s financial system and attracts significant domestic and international investment across multiple sectors."};</script>
 </head>
 
 <body>
+
+  <!-- Global Loader Overlay -->
+  <div id="global-loader">
+    <div class="spinner"></div>
+    <div class="loader-text">Connecting to Market Data...</div>
+  </div>
 
   <!-- Header -->
   <header class="header">
@@ -232,7 +238,7 @@
             style="display: none; margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border-color);">
             <h4 style="margin-bottom: 1rem;">Check Timings in Another Timezone</h4>
             <div class="search-box" style="margin: 0; max-width: 100%;">
-              <input id="tzInput" placeholder="Enter timezone (e.g., Asia/Kolkata)..."
+              <input id="tzInput" placeholder="Enter timezone (e.g., tokyo/japan)..."
                 style="border: 1px solid var(--border-color); box-shadow: none;">
               <div id="tzSuggestions" class="suggestions"></div>
             </div>

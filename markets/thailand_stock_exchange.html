@@ -111,10 +111,16 @@
     }
   </style>
 <link rel="icon" href="../assets/favicon.png" type="image/png">
-<script>window.PRELOADED_EXCHANGE = {"name":"Thailand Stock Exchange","code":"SET","country":"Thailand","region":"Asia","owned_by":"Stock Exchange of Thailand","index":"SET Index","established":"1975","timezone":"Asia/Bangkok","pre":"09:00","open":"10:00","close":"16:30","post":"16:45","website":"https://www.set.or.th","description":"Stock Exchange of Thailand is the main securities market in Thailand. It offers equity, derivatives, and bond trading services. The exchange supports corporate fundraising and provides investors with access to Thailand’s growing industrial and service sectors."};</script>
+<script>window.PRELOADED_EXCHANGE = {"name":"Thailand Stock Exchange","code":"SET","country":"Thailand","region":"Asia","owned_by":"Stock Exchange of Thailand","index":"SET Index","established":"1975","timezone":"Asia/Bangkok","pre":"09:00","open":"10:00","close":"16:30","post":"16:45","website":"https://www.set.or.th","description":"Stock Exchange of Thailand is the main securities market in Thailand. It offers equity, derivatives, and bond trading services. The exchange supports corporate fundraising and provides investors with access to Thailand\u0027s growing industrial and service sectors."};</script>
 </head>
 
 <body>
+
+  <!-- Global Loader Overlay -->
+  <div id="global-loader">
+    <div class="spinner"></div>
+    <div class="loader-text">Connecting to Market Data...</div>
+  </div>
 
   <!-- Header -->
   <header class="header">
@@ -232,7 +238,7 @@
             style="display: none; margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border-color);">
             <h4 style="margin-bottom: 1rem;">Check Timings in Another Timezone</h4>
             <div class="search-box" style="margin: 0; max-width: 100%;">
-              <input id="tzInput" placeholder="Enter timezone (e.g., Asia/Kolkata)..."
+              <input id="tzInput" placeholder="Enter timezone (e.g., tokyo/japan)..."
                 style="border: 1px solid var(--border-color); box-shadow: none;">
               <div id="tzSuggestions" class="suggestions"></div>
             </div>
